@@ -9,6 +9,7 @@ authors = [
 dependencies = [
     "django>=4.2.3",
     "setuptools>=68.0.0",
+    "djangorestframework>=3.14.0",
 ]
 requires-python = ">=3.11"
 license = {text = "MIT"}
