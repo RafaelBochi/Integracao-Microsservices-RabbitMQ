@@ -1,0 +1,26 @@
+
+[project]
+name = ""
+version = ""
+description = ""
+authors = [
+    {name = "faelbochi", email = "rafaelbochibarros@gmail.com"},
+]
+dependencies = [
+    "django>=4.2.3",
+    "setuptools>=68.0.0",
+]
+requires-python = ">=3.11"
+license = {text = "MIT"}
+
+[tool.pdm.scripts]
+dev = "python manage.py runserver"
+runserver = "python manage.py runserver"
+createsuperuser = "python manage.py createsuperuser"
+migrate = "python manage.py migrate"
+makemigrations = "python manage.py makemigrations"
+shell = "python manage.py shell"
+test = "python manage.py test"
+startapp = "python manage.py startapp {args}"
+loaddata = "python manage.py loaddata {args}"
+dumpdata = "python manage.py dumpdata {args}"
