@@ -2,6 +2,9 @@ from django.db import models
 from django.utils.translation import gettext_lazy as _
 from .managers import CustomUserManager
 from django.contrib.auth.models import AbstractUser
+from django.db.models.signals import post_save, post_delete
+from django.dispatch import receiver
+from .tasks import send_message_create
 
 class User(AbstractUser):
     username = models.CharField(max_length=50, unique=True)
@@ -25,3 +28,22 @@ class User(AbstractUser):
     def __str__(self):
         return self.email
 
+@receiver(post_save, sender=User)
+def create_user(sender, instance, created, **kwargs):
+    if created:
+        message = {
+            "username": instance.username,
+            "email": instance.email,
+            "password": instance.password,
+            "type": "create"
+        }
+        send_message_create.delay(message)
+
+@receiver(post_delete, sender=User)
+def delete_user(sender, instance, **kwargs):
+    message = {
+        "username": instance.username,
+        "email": instance.email,
+        "type": "delete"
+    }
+    send_message.delay(message)
