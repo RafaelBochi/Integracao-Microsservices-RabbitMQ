@@ -37,7 +37,7 @@ def create_user(sender, instance, created, **kwargs):
             "password": instance.password,
             "type": "create"
         }
-        send_message_create.delay(message)
+        send_message.delay(message)
 
 @receiver(post_delete, sender=User)
 def delete_user(sender, instance, **kwargs):
