@@ -1,5 +1,6 @@
 {
     "python.analysis.extraPaths": [
-        "./users/back/__pypackages__/3.11/lib"
+        "./users/back/__pypackages__/3.11/lib",
+        "./todo_list/back/__pypackages__/3.11/lib"
     ]
 }
