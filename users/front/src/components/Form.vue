@@ -1,11 +1,28 @@
 <script setup>
-import { computed } from "vue";
+import { computed, ref } from "vue";
+import { useUserStore } from "@/stores/user";
 
 const props = defineProps({
     darkMode: Boolean
 });
 
+const userStore = useUserStore();
+
 const darkMode = computed(() => props.darkMode);
+
+const inputUsername = ref('');
+const inputEmail = ref('');
+const inputPassword = ref('');
+
+function addUser() {
+    const user = {
+        username: inputUsername.value,
+        email: inputEmail.value,
+        password: inputPassword.value
+    }
+
+    userStore.addUser(user);
+}
 </script>
 
 <template>
@@ -16,25 +33,25 @@ const darkMode = computed(() => props.darkMode);
 
         <div class="inputs">
             <div class="inputName">
-                <input type="text" required>
+                <input type="text" v-model="inputUsername" required>
                 <label>Username</label>
                 <i></i>
             </div>
 
             <div class="inputEmail">
-                <input type="text" required>
+                <input type="text" v-model="inputEmail" required>
                 <label>Email</label>
                 <i></i>
             </div>
 
             <div class="inputPassword">
-                <input type="password" required>
+                <input type="password" v-model="inputPassword" required>
                 <label>Password</label>
                 <i></i>
             </div>
         </div>
 
-        <button>
+        <button @click="addUser">
             Criar Usuario
         </button>
     </section>
