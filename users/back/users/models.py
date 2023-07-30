@@ -4,7 +4,7 @@ from .managers import CustomUserManager
 from django.contrib.auth.models import AbstractUser
 from django.db.models.signals import post_save, post_delete
 from django.dispatch import receiver
-from .tasks import send_message_create
+from .tasks import send_message
 
 class User(AbstractUser):
     username = models.CharField(max_length=50, unique=True)
