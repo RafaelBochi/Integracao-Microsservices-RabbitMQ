@@ -42,7 +42,6 @@ def create_user(sender, instance, created, **kwargs):
 @receiver(post_delete, sender=User)
 def delete_user(sender, instance, **kwargs):
     message = {
-        "username": instance.username,
         "email": instance.email,
         "type": "delete"
     }

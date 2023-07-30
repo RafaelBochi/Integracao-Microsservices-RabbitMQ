@@ -6,19 +6,23 @@ from .managers import CustomUserManager
 
 
 class Usuario(AbstractUser):
-    username = None
+    username = models.CharField(max_length=50, unique=True)
     email = models.EmailField(_("e-mail address"), unique=True)
     cpf = models.CharField(_("CPF"), max_length=11, blank=True, null=True)
     telefone = models.CharField(_("Phone"), max_length=11, blank=True, null=True)
     data_nascimento = models.DateField(
         _("Birth Date"), auto_now=False, auto_now_add=False, blank=True, null=True
     )
+    password_reset_token_created = models.DateTimeField(null=True, blank=True)
 
-    USERNAME_FIELD = "email"
-    REQUIRED_FIELDS = []
+
+    
+    objects = CustomUserManager()
+
+    USERNAME_FIELD = "username"
+    REQUIRED_FIELDS = ["email"]
     EMAIL_FIELD = "email"
 
-    objects = CustomUserManager()
 
     def __str__(self):
         return self.email
