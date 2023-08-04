@@ -1,1 +1,0 @@
-# Integracao-Microsservices-RabbitMQ

@@ -1,5 +1,13 @@
 <script>
+import { ref } from 'vue'
 
+const username = ref('')
+const password = ref('')
+const email = ref('')
+
+function createUser() {
+
+}
 
 </script>
 
@@ -9,8 +17,11 @@
 
     <div class="inputs">
 
-      <input type="text" placeholder="Username">
-      <input type="text" placeholder="Password">
+      <input type="text" placeholder="Username" v-model="username">
+      <input type="text" placeholder="Password" v-model="password">
+      <input type="text" placeholder="Email" v-model="email">
+
+      <button @click="createUser()">Confirm</button>
 
     </div>
   </div>
@@ -39,4 +50,25 @@ input {
   border-radius: 5px;
   border: 1px solid #ccc;
 }
+
+button {
+  background-color: rgb(18, 187, 18);
+  color: white;
+  font-size: small;
+  border: 0;
+  cursor: pointer;
+  border-radius: 15px;
+  width: 100px;
+  height: 30px;
+  font-weight: bold;
+}
+
+button:hover {
+  transform: scale(1.05);
+}
+
+button:active{
+  transform: scale(0.9);
+}
+
 </style>
