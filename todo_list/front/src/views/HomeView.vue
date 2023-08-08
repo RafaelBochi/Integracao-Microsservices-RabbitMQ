@@ -1,12 +1,20 @@
-<script>
+<script setup>
 import { ref } from 'vue'
+import producerApi from '../api/producer.js'
+
+const producer = new producerApi()
 
 const username = ref('')
 const password = ref('')
 const email = ref('')
 
-function createUser() {
-
+async function createUser() {
+  let user = {
+    username: username.value,
+    password: password.value,
+    email: email.value
+  }
+  await producer.createUser(user)
 }
 
 </script>
@@ -34,6 +42,7 @@ h1 {
   margin: 20px;
   font-family: 'Courier New', Courier, monospace;
   font-weight: 100;
+  color: #ff8b3f;
 }
 
 .inputs {
@@ -49,10 +58,11 @@ input {
   width: 300px;
   border-radius: 5px;
   border: 1px solid #ccc;
+  background-color: #f1f1f1;
 }
 
 button {
-  background-color: rgb(18, 187, 18);
+  background-color: #267a7a;
   color: white;
   font-size: small;
   border: 0;

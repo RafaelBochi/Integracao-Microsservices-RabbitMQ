@@ -1,7 +1,8 @@
 import axios from 'axios' 
 
 export default class producerApi {
-    async createUser(username, password, email) {
-        const {data} = await axios.post('user/', )
+    async createUser(user) {
+        const {data} = await axios.post('api/usuarios/', user)
+        return data
     }
 }
