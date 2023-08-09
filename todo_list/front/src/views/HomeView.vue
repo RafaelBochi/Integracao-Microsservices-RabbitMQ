@@ -1,84 +1,43 @@
 <script setup>
 import { ref } from 'vue'
-import producerApi from '../api/producer.js'
+import consumerApi from '../api/consumer.js'
 
-const producer = new producerApi()
-
-const username = ref('')
-const password = ref('')
-const email = ref('')
-
-async function createUser() {
-  let user = {
-    username: username.value,
-    password: password.value,
-    email: email.value
-  }
-  await producer.createUser(user)
-}
+import tasks from '../components/tasks.vue'
 
 </script>
 
 <template>
-  <div>
-    <h1>Página Login - Teste RabbitMQ</h1>
-
-    <div class="inputs">
-
-      <input type="text" placeholder="Username" v-model="username">
-      <input type="text" placeholder="Password" v-model="password">
-      <input type="text" placeholder="Email" v-model="email">
-
-      <button @click="createUser()">Confirm</button>
-
-    </div>
-  </div>
+  <main>
+    <img src="/logo_dark.png" alt="Fábrica de Software" class="logo">
+    <tasks/>
+  </main>
 </template>
 
 
 <style scoped>
-h1 {
-  text-align: center;
-  margin: 20px;
-  font-family: 'Courier New', Courier, monospace;
-  font-weight: 100;
-  color: #ff8b3f;
-}
 
-.inputs {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-}
+.logo {
+        position: absolute;
+        left: 1%;
+        top: 1%;
+        width: 50px;
+    }
 
-input {
-  margin: 10px;
-  padding: 10px;
-  width: 300px;
-  border-radius: 5px;
-  border: 1px solid #ccc;
-  background-color: #f1f1f1;
-}
+    main {
+        position: relative;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #22272e;
+    }
 
-button {
-  background-color: #267a7a;
-  color: white;
-  font-size: small;
-  border: 0;
-  cursor: pointer;
-  border-radius: 15px;
-  width: 100px;
-  height: 30px;
-  font-weight: bold;
-}
-
-button:hover {
-  transform: scale(1.05);
-}
-
-button:active{
-  transform: scale(0.9);
-}
+.mode {
+        position: absolute;
+        right: 1%;
+        top: 1%;
+        width: 20px;
+        cursor: pointer;
+    }
 
 </style>
