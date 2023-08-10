@@ -1,0 +1,18 @@
+version: '3'
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"  # Mapeamento da porta do contêiner para a porta do host
+    volumes:
+      - .:/app  # Mapeamento do diretório do projeto para o diretório do contêiner
+    depends_on:
+      - db  # Indica que este serviço depende do serviço 'db'
+  db:
+    image: postgres:latest
+    environment:
+      POSTGRES_DB: users
+      POSTGRES_USER: admin  
+      POSTGRES_PASSWORD: admin
