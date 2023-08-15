@@ -1,3 +1,19 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+
+html {
+    height: 100%;
+    font-size: 62.5%;
+}
+
 body {
-    background-color: #22272e;
+    height: 100%;
+}
+
+#app {
+    height: 100%;
 }
