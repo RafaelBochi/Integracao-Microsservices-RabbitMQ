@@ -58,7 +58,7 @@ DATABASES = {
         'NAME': 'users',
         'USER': 'admin',
         'PASSWORD': 'admin',
-        'HOST': 'localhost',  # Ou o endereço do servidor PostgreSQL
+        'HOST': 'db',  # Ou o endereço do servidor PostgreSQL
         'PORT': '5432',       # Porta padrão do PostgreSQL
     }
 }
