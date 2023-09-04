@@ -1,16 +1,16 @@
 version: '3'
 services:
-  web:
+  web-todo:
     build:
       context: .
       dockerfile: Dockerfile
     ports:
-      - "8001:8001"  # Mapeamento da porta do contêiner para a porta do host
+      - "8003:8003"  # Mapeamento da porta do contêiner para a porta do host
     volumes:
       - .:/app  # Mapeamento do diretório do projeto para o diretório do contêiner
     depends_on:
-      - db  # Indica que este serviço depende do serviço 'db'
-  db:
+      - db-todo  # Indica que este serviço depende do serviço 'db'
+  db-todo:
     image: postgres:latest
     environment:
       POSTGRES_DB: todo_list
