@@ -18,3 +18,12 @@ services:
       - .:/app  # Mapeamento do diretório do projeto para o diretório do contêiner
     depends_on:
       - db  # Indica que este serviço depende do serviço 'db' 
+  rabbitmq:
+    image: rabbitmq:3-management-alpine
+    container_name: 'rabbitmq'
+    ports:
+        - 5672:5672
+        - 15672:15672
+    volumes:
+        - ~/.docker-conf/rabbitmq/data/:/var/lib/rabbitmq/
+        - ~/.docker-conf/rabbitmq/log/:/var/log/rabbitmq

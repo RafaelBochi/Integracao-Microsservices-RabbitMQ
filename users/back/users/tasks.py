@@ -6,11 +6,11 @@ import pika
 import json
 
 connection_params = pika.ConnectionParameters(
-    host='localhost',
+    host='rabbitmq',
     port="5672",
     credentials=pika.PlainCredentials(
-        username='admin',
-        password='admin'),
+        username='guest',
+        password='guest'),
 )
 
 @shared_task
