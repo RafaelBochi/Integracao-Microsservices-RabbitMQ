@@ -6,8 +6,6 @@ import json
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'config.settings') 
 django.setup()
 
-
-from todo_list.models import List
 from usuario.models import Usuario
 def my_callback(ch, method, properties, body):
     print("aqui....")
