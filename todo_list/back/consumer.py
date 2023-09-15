@@ -10,17 +10,19 @@ from usuario.models import Usuario
 def my_callback(ch, method, properties, body):
     print("aqui....")
     data = json.loads(body)
-    if data['type'] == 'create':
-        Usuario.objects.create( username=data['username'] ,email=data['email'], password=data['password'])
+    print(data)
+    print(data[0][0]['email'])
+    if data[0][0]['type'] == 'create':
+        Usuario.objects.create( username=data[0][0]['username'] ,email=data[0][0]['email'], password=data[0][0]['password'])
     
-    elif data['type'] == 'delete':
-        Usuario.objects.get(email=data['email']).delete()
+    elif data[0][0]['type'] == 'delete':
+        Usuario.objects.get(email=data[0][0]['email']).delete()
     
 
 connection = pika.BlockingConnection(pika.ConnectionParameters('rabbitmq', heartbeat=600, blocked_connection_timeout=300))
 channel = connection.channel()
-channel.queue_declare(queue='todo_list', durable=True)
+channel.queue_declare(queue='celery', durable=True)
 
-channel.basic_consume(queue='todo_list', on_message_callback=my_callback, auto_ack=True)
+channel.basic_consume(queue='celery', on_message_callback=my_callback, auto_ack=True)
 print("Started Consuming...")
 channel.start_consuming()
