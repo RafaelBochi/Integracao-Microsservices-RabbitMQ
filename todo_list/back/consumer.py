@@ -1,11 +1,9 @@
-
 import os
 import django
 import pika
 import json
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'config.settings') 
 django.setup()
-
 from usuario.models import Usuario
 def my_callback(ch, method, properties, body):
     print("aqui....")
@@ -19,7 +17,7 @@ def my_callback(ch, method, properties, body):
         Usuario.objects.get(email=data[0][0]['email']).delete()
     
 
-connection = pika.BlockingConnection(pika.ConnectionParameters('rabbitmq', heartbeat=600, blocked_connection_timeout=300))
+connection = pika.BlockingConnection(pika.ConnectionParameters('rabbitmq', heartbeat=600, blocked_connection_timeout=10000))
 channel = connection.channel()
 channel.queue_declare(queue='celery', durable=True)
 

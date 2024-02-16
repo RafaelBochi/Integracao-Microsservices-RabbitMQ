@@ -7,12 +7,14 @@ authors = [
     {name = "faelbochi", email = "rafaelbochibarros@gmail.com"},
 ]
 dependencies = [
-    "django>=4.2.3",
+    "django>=5.0.2",
     "setuptools>=68.0.0",
     "djangorestframework>=3.14.0",
     "pika>=1.3.2",
     "celery>=5.3.1",
     "django-cors-headers>=4.2.0",
+    "psycopg2>=2.9.9",
+    "psycopg>=3.1.18",
 ]
 requires-python = ">=3.10"
 license = {text = "MIT"}

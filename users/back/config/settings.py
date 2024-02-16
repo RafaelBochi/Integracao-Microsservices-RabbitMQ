@@ -1,4 +1,5 @@
 from pathlib import Path
+import os
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -55,13 +56,20 @@ WSGI_APPLICATION = 'config.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'users',
+        'NAME': 'todo_list',
         'USER': 'admin',
         'PASSWORD': 'admin',
-        'HOST': 'db',  # Ou o endereço do servidor PostgreSQL
+        'HOST': 'db-todo',  # Ou o endereço do servidor PostgreSQL
         'PORT': '5432',       # Porta padrão do PostgreSQL
     }
 }
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#     }
+# }
 
 AUTH_PASSWORD_VALIDATORS = [
     {

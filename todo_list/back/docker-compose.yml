@@ -17,4 +17,4 @@ services:
       POSTGRES_USER: admin  
       POSTGRES_PASSWORD: admin
     volumes:
-      - ./data:/var/lib/postgresql/data  # Mapeamento do diretório do contêiner para o diretório do host
+      - ./data:/var/lib/postgresql/data 

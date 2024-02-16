@@ -22,6 +22,10 @@ function addUser() {
     }
 
     userStore.addUser(user);
+
+    inputUsername.value = '';
+    inputEmail.value = '';
+    inputPassword.value = '';
 }
 </script>
 

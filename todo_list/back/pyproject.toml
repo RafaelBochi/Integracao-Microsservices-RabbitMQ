@@ -7,7 +7,7 @@ authors = [
     {name = "RafaelBochi", email = "rafaelbochibarros@gmail.com"},
 ]
 dependencies = [
-    "django>=4.2.3",
+    "django>=5.0.2",
     "djangorestframework>=3.14.0",
     "setuptools>=68.0.0",
     "celery>=5.3.4",
